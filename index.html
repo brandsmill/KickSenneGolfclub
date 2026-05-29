@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Senne Golfclub Gut Welshof - Vom Strafraum aufs Green</title>
+    <title>Senne Golfclub Gut Welschof - Vom Strafraum aufs Green</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -45,17 +45,16 @@
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
+
+        /* Hintergrund-Stile für den Header mit Verlauf (oben hell, unten dunkler) */
+        .hero-bg {
+            background:
+
+                    url('image/background.JPG') center/cover no-repeat;
+        }
     </style>
 </head>
 <body class="antialiased">
-
-<!-- Chosen Palette: Senne Forest Green & Soft Sand -->
-<!-- Application Structure Plan: Diese interaktive Landingpage richtet sich dauerhaft an aktive und ehemalige Fußballer. Die Struktur baut Hürden ab, indem sie spielerisch Gemeinsamkeiten aufzeigt, athletische Missverständnisse mittels Live-Datenvergleich korrigiert und direkt auf die offizielle Einstiegsseite des Senne Golfclubs Gut Welshof verlinkt. -->
-<!-- Visualization & Content Choices:
-     1. Interaktiver Tab-Explorer: Zeigt humorvoll und präzise die sportlichen Synergien zwischen Fußball und Golf.
-     2. Athletik-Vergleich: Chart.js Balkendiagramm vergleicht Laufleistung und Kalorienverbrauch, um die sportliche Intensität von Golf zu beweisen.
-     3. Einstiegs-CTA: Prominenter Teaser für den Schnupperkurs mit direkter Verlinkung zur Senne Golfclub Einstiegsseite. -->
-<!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
 
 <nav class="bg-white shadow-sm sticky top-0 z-50">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -66,7 +65,7 @@
                 </div>
                 <div class="flex flex-col">
                     <span class="font-bold text-emerald-900 text-lg sm:text-xl serif-font tracking-tight">Senne Golfclub</span>
-                    <span class="text-xs text-emerald-700 tracking-widest uppercase font-semibold">Gut Welshof</span>
+                    <span class="text-xs text-emerald-700 tracking-widest uppercase font-semibold">Gut Welschof</span>
                 </div>
             </div>
             <div>
@@ -77,20 +76,29 @@
         </div>
     </div>
 </nav>
+<header class="hero-bg py-20 sm:py-28 px-4 sm:px-6 lg:px-8 text-center border-b border-stone-200 relative min-h-[600px] flex items-center justify-center">
 
-<header class="bg-stone-100 py-24 px-4 sm:px-6 lg:px-8 text-center border-b border-stone-200">
-    <div class="max-w-3xl mx-auto fade-in">
-        <div class="text-6xl mb-6">⚽ 🤝 ⛳</div>
-        <h1 class="text-4xl sm:text-5xl font-bold text-stone-800 mb-6 leading-tight">
+    <div class="max-w-3xl mx-auto fade-in relative z-10 bg-[#0F5132]/75 backdrop-blur-sm rounded-2xl p-6 sm:p-10 shadow-xl border border-white/10 flex flex-col items-center justify-center">
+
+        <div class="text-5xl sm:text-6xl mb-6 block clear-both select-none">
+            ⚽ 🤝 ⛳
+        </div>
+
+        <h1 class="text-3xl sm:text-5xl font-bold text-white mb-6 leading-normal serif-font">
             Vom Strafraum aufs Green. <br>
-            <span class="text-[#0F5132]">Euer Ballgefühl entscheidet!</span>
+            <span class="text-emerald-300 block mt-1">Euer Ballgefühl entscheidet!</span>
         </h1>
-        <p class="text-lg sm:text-xl text-stone-600 mb-8 leading-relaxed">
-            Fußballer bringen bereits die wichtigsten Voraussetzungen für den Golfsport mit: Präzision, Koordination, Standfestigkeit und ein exzellentes Gespür für Distanzen. Tauscht die Stollen gegen das Eisen und entdeckt eure neue sportliche Herausforderung direkt vor der Haustür im Senne Golfclub Gut Welshof.
+
+        <p class="text-base sm:text-lg text-emerald-50 mb-8 leading-relaxed max-w-2xl">
+            Fußballer bringen bereits die wichtigsten Voraussetzungen für den Golfsport mit: Präzision, Koordination, Standfestigkeit und ein exzellentes Gespür für Distanzen. Tauscht die Stollen gegen das Eisen und entdeckt eure neue sportliche Herausforderung direkt vor der Haustür im Senne Golfclub Gut Welschof.
         </p>
-        <a href="#gemeinsamkeiten" class="inline-block border-2 border-stone-800 text-stone-800 px-6 py-3 rounded-full font-semibold hover:bg-stone-800 hover:text-white transition-colors">
-            Erfahrt, warum Fußballer so gut golfen ↓
-        </a>
+
+        <div class="block mt-2">
+            <a href="#gemeinsamkeiten" class="inline-block bg-white border-2 border-white text-[#0F5132] px-6 py-3 rounded-full font-semibold hover:bg-transparent hover:text-white transition-colors duration-300 shadow-md">
+                Erfahrt, warum Fußballer so gut golfen ↓
+            </a>
+        </div>
+
     </div>
 </header>
 
@@ -115,7 +123,7 @@
                 <div class="text-5xl mb-4" id="content-icon">🌿</div>
                 <h3 class="text-2xl font-bold text-stone-800 mb-4 serif-font" id="content-title">Heiliger Boden</h3>
                 <p class="text-lg text-stone-600 leading-relaxed max-w-2xl mx-auto" id="content-text">
-                    Das Gefühl für perfekt gemähtes Grün habt ihr längst verinnerlicht. Auf Gut Welshof erwarten euch weitläufige Fairways inmitten der idyllischen Senne-Landschaft – Natur pur, sportliche Aktivität und die vertraute Ruhe des weiten Rasens.
+                    Das Gefühl für perfekt gemähtes Grün habt ihr längst verinnerlicht. Auf Gut Welschof erwarten euch weitläufige Fairways inmitten der idyllischen Senne-Landschaft – Natur pur, sportliche Aktivität und die vertraute Ruhe des weiten Rasens.
                 </p>
             </div>
         </div>
@@ -152,7 +160,7 @@
         <div class="text-4xl mb-4">⛳</div>
         <h2 class="text-3xl sm:text-4xl font-bold mb-6 serif-font">Euer unkomplizierter Einstieg</h2>
         <p class="text-lg sm:text-xl mb-12 text-emerald-100 max-w-2xl mx-auto">
-            Keine steifen Etiketten, kein komplizierter Einstieg. Bei uns auf Gut Welshof steht der Spaß am Sport und die Gemeinschaft im Vordergrund. Probiert es einfach aus – allein, mit euren Sportkollegen oder der ganzen Mannschaft.
+            Keine steifen Etiketten, kein komplizierter Einstieg. Bei uns auf Gut Welschof steht der Spaß am Sport und die Gemeinschaft im Vordergrund. Probiert es einfach aus – allein, mit euren Sportkollegen oder der ganzen Mannschaft.
         </p>
 
         <div class="bg-white text-stone-800 rounded-2xl p-8 sm:p-10 shadow-xl max-w-2xl mx-auto text-left transform hover:scale-105 transition-transform duration-300">
@@ -168,7 +176,7 @@
                 </li>
                 <li class="flex items-start gap-3">
                     <span class="text-emerald-700 mt-1">🌿</span>
-                    <span><strong>Erlebnis Gut Welshof:</strong> Geführte Runde über unseren wunderschönen Platz.</span>
+                    <span><strong>Erlebnis Gut Welschof:</strong> Geführte Runde über unseren wunderschönen Platz.</span>
                 </li>
                 <li class="flex items-start gap-3">
                     <span class="text-emerald-700 mt-1">👥</span>
@@ -184,14 +192,14 @@
 
 <footer class="bg-stone-900 text-stone-400 py-12 px-4 text-center">
     <div class="max-w-4xl mx-auto">
-        <h4 class="text-white text-xl font-bold mb-4 serif-font">Senne Golfclub e.V. Gut Welshof</h4>
+        <h4 class="text-white text-xl font-bold mb-4 serif-font">Senne Golfclub e.V. Gut Welschof</h4>
         <p class="mb-6">Sennestraße 123 • 33758 Schloß Holte-Stukenbrock<br>Tel: 05207 / XXXXX • info@sennegolfclub.de</p>
         <div class="flex justify-center gap-6 text-sm mb-8">
             <a href="https://www.sennegolfclub.de/Start-in-den-Golfsport" target="_blank" class="hover:text-white transition-colors">Start in den Golfsport</a>
             <a href="https://www.sennegolfclub.de/" target="_blank" class="hover:text-white transition-colors">Club-Homepage</a>
         </div>
         <p class="text-xs border-t border-stone-700 pt-8">
-            © 2026 Senne Golfclub e.V. Gut Welshof. Alle Rechte vorbehalten.
+            © 2026 Senne Golfclub e.V. Gut Welschof. Alle Rechte vorbehalten.
         </p>
     </div>
 </footer>
@@ -201,7 +209,7 @@
         'rasen': {
             icon: '🌿',
             title: 'Heiliger Boden',
-            text: 'Das Gefühl für perfekt gemähtes Grün habt ihr längst verinnerlicht. Auf Gut Welshof erwarten euch weitläufige Fairways inmitten der idyllischen Senne-Landschaft – Natur pur, sportliche Aktivität und die vertraute Ruhe des weiten Rasens.'
+            text: 'Das Gefühl für perfekt gemähtes Grün habt ihr längst verinnerlicht. Auf Gut Welschof erwarten euch weitläufige Fairways inmitten der idyllischen Senne-Landschaft – Natur pur, sportliche Aktivität und die vertraute Ruhe des weiten Rasens.'
         },
         'ziel': {
             icon: '🎯',
