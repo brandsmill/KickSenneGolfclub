@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Senne Golfclub Gut Welshof - Vom Strafraum aufs Green</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #FAF9F5;
+            color: #2D3748;
+        }
+        h1, h2, h3, h4, .serif-font {
+            font-family: 'Merriweather', serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 450px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        .tab-btn {
+            transition: all 0.3s ease;
+        }
+        .tab-btn.active {
+            background-color: #0F5132;
+            color: white;
+            border-color: #0F5132;
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Chosen Palette: Senne Forest Green & Soft Sand -->
+    <!-- Application Structure Plan: Diese interaktive Landingpage richtet sich dauerhaft an aktive und ehemalige Fußballer. Die Struktur baut Hürden ab, indem sie spielerisch Gemeinsamkeiten aufzeigt, athletische Missverständnisse mittels Live-Datenvergleich korrigiert und direkt auf die offizielle Einstiegsseite des Senne Golfclubs Gut Welshof verlinkt. -->
+    <!-- Visualization & Content Choices: 
+         1. Interaktiver Tab-Explorer: Zeigt humorvoll und präzise die sportlichen Synergien zwischen Fußball und Golf. 
+         2. Athletik-Vergleich: Chart.js Balkendiagramm vergleicht Laufleistung und Kalorienverbrauch, um die sportliche Intensität von Golf zu beweisen. 
+         3. Einstiegs-CTA: Prominenter Teaser für den Schnupperkurs mit direkter Verlinkung zur Senne Golfclub Einstiegsseite. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex-shrink-0 flex items-center gap-3">
+                    <span class="text-3xl">⛳</span>
+                    <div class="flex flex-col">
+                        <span class="font-bold text-emerald-900 text-lg sm:text-xl serif-font tracking-tight">Senne Golfclub</span>
+                        <span class="text-xs text-emerald-700 tracking-widest uppercase font-semibold">Gut Welshof</span>
+                    </div>
+                </div>
+                <div>
+                    <a href="https://www.sennegolfclub.de/Start-in-den-Golfsport" target="_blank" class="bg-emerald-850 bg-[#0F5132] hover:bg-[#0a3822] text-white px-5 py-2.5 rounded-full text-sm font-semibold transition-colors shadow-md">
+                        Schnupperkurs buchen ➔
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="bg-stone-100 py-24 px-4 sm:px-6 lg:px-8 text-center border-b border-stone-200">
+        <div class="max-w-3xl mx-auto fade-in">
+            <div class="text-6xl mb-6">⚽ 🤝 ⛳</div>
+            <h1 class="text-4xl sm:text-5xl font-bold text-stone-800 mb-6 leading-tight">
+                Vom Strafraum aufs Green. <br>
+                <span class="text-[#0F5132]">Euer Ballgefühl entscheidet!</span>
+            </h1>
+            <p class="text-lg sm:text-xl text-stone-600 mb-8 leading-relaxed">
+                Fußballer bringen bereits die wichtigsten Voraussetzungen für den Golfsport mit: Präzision, Koordination, Standfestigkeit und ein exzellentes Gespür für Distanzen. Tauscht die Stollen gegen das Eisen und entdeckt eure neue sportliche Herausforderung direkt vor der Haustür im Senne Golfclub Gut Welshof.
+            </p>
+            <a href="#gemeinsamkeiten" class="inline-block border-2 border-stone-800 text-stone-800 px-6 py-3 rounded-full font-semibold hover:bg-stone-800 hover:text-white transition-colors">
+                Erfahrt, warum Fußballer so gut golfen ↓
+            </a>
+        </div>
+    </header>
+
+    <section id="gemeinsamkeiten" class="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-stone-800 mb-4">Warum ihr den Schwung im Blut habt</h2>
+                <p class="text-stone-600 text-lg">
+                    Wer einen Ball punktgenau über 40 Meter in den Lauf des Mitspielers flanken kann, bringt anatomisch bereits alles für den perfekten Golfschlag mit. 
+                </p>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-2 mb-8" id="tab-buttons">
+                <button data-target="rasen" class="tab-btn active px-6 py-3 border border-stone-300 rounded-full font-semibold text-stone-600 hover:bg-stone-100">🌿 Der Rasen</button>
+                <button data-target="ziel" class="tab-btn px-6 py-3 border border-stone-300 rounded-full font-semibold text-stone-600 hover:bg-stone-100">🎯 Das Ballgefühl</button>
+                <button data-target="taktik" class="tab-btn px-6 py-3 border border-stone-300 rounded-full font-semibold text-stone-600 hover:bg-stone-100">🧠 Die mentale Stärke</button>
+                <button data-target="halbzeit" class="tab-btn px-6 py-3 border border-stone-300 rounded-full font-semibold text-stone-600 hover:bg-stone-100">🍻 Die Gemeinschaft</button>
+            </div>
+
+            <div class="bg-stone-50 border border-stone-200 rounded-2xl p-8 sm:p-12 shadow-sm min-h-[250px] flex items-center justify-center text-center">
+                <div id="tab-content" class="fade-in">
+                    <div class="text-5xl mb-4" id="content-icon">🌿</div>
+                    <h3 class="text-2xl font-bold text-stone-800 mb-4 serif-font" id="content-title">Heiliger Boden</h3>
+                    <p class="text-lg text-stone-600 leading-relaxed max-w-2xl mx-auto" id="content-text">
+                        Das Gefühl für perfekt gemähtes Grün habt ihr längst verinnerlicht. Auf Gut Welshof erwarten euch weitläufige Fairways inmitten der idyllischen Senne-Landschaft – Natur pur, sportliche Aktivität und die vertraute Ruhe des weiten Rasens.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 px-4 sm:px-6 lg:px-8 bg-stone-100 border-t border-b border-stone-200">
+        <div class="max-w-5xl mx-auto">
+            <div class="mb-12 md:flex md:items-center md:justify-between">
+                <div class="md:w-1/2 md:pr-8 mb-8 md:mb-0">
+                    <h2 class="text-3xl font-bold text-stone-800 mb-4">Ausdauersport neu definiert</h2>
+                    <p class="text-stone-600 text-lg mb-6 leading-relaxed">
+                        Man unterschätzt leicht, wie athletisch eine Golfrunde ist. Ihr lauft zwar keine kurzen Sprints wie auf dem Fußballfeld, bewegt euch aber über mehrere Stunden im perfekten aeroben Fettverbrennungsbereich. Ein hervorragendes Regenerationstraining oder die ideale Sportart, um nach der aktiven Vereinskarriere gelenkschonend und kompetitiv am Ball zu bleiben.
+                    </p>
+                    <ul class="space-y-3 text-stone-700">
+                        <li class="flex items-center gap-2"><span class="text-emerald-700 font-bold">✓</span> Bis zu 10 Kilometer Wegstrecke pro Runde.</li>
+                        <li class="flex items-center gap-2"><span class="text-emerald-700 font-bold">✓</span> Hocheffektives Ganzkörpertraining durch die Rotationsbewegung.</li>
+                        <li class="flex items-center gap-2"><span class="text-emerald-700 font-bold">✓</span> Volle Konzentration über 4 Stunden Spielzeit.</li>
+                    </ul>
+                </div>
+                <div class="md:w-1/2 w-full">
+                    <div class="bg-white p-4 rounded-xl shadow-md">
+                        <div class="chart-container">
+                            <canvas id="sportsComparisonChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="angebot" class="py-20 px-4 sm:px-6 lg:px-8 bg-[#0F5132] text-white">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="text-4xl mb-4">⛳</div>
+            <h2 class="text-3xl sm:text-4xl font-bold mb-6 serif-font">Euer unkomplizierter Einstieg</h2>
+            <p class="text-lg sm:text-xl mb-12 text-emerald-100 max-w-2xl mx-auto">
+                Keine steifen Etiketten, kein komplizierter Einstieg. Bei uns auf Gut Welshof steht der Spaß am Sport und die Gemeinschaft im Vordergrund. Probiert es einfach aus – allein, mit euren Sportkollegen oder der ganzen Mannschaft.
+            </p>
+
+            <div class="bg-white text-stone-800 rounded-2xl p-8 sm:p-10 shadow-xl max-w-2xl mx-auto text-left transform hover:scale-105 transition-transform duration-300">
+                <div class="uppercase tracking-wide text-sm text-emerald-800 font-bold mb-2">Für Einsteiger &amp; Teams</div>
+                <h3 class="text-2xl font-bold mb-4 serif-font">Unser Schnupperkurs-Programm</h3>
+                <p class="text-stone-600 mb-6">
+                    Erlernt unter professioneller Anleitung der PGA-Golflehrer die wichtigsten Grundlagen des Golfsports. Schläger und Übungsbälle werden komplett gestellt.
+                </p>
+                <ul class="space-y-4 mb-8">
+                    <li class="flex items-start gap-3">
+                        <span class="text-emerald-700 mt-1">🏌️</span>
+                        <span><strong>Praktisches Training:</strong> Erste Schläge auf der Driving Range, Chippen und Putten.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="text-emerald-700 mt-1">🌿</span>
+                        <span><strong>Erlebnis Gut Welshof:</strong> Geführte Runde über unseren wunderschönen Platz.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="text-emerald-700 mt-1">👥</span>
+                        <span><strong>Flexibel &amp; Gesellig:</strong> Termine für Einzelpersonen, Kleingruppen oder als komplettes Teamevent buchbar.</span>
+                    </li>
+                </ul>
+                <a href="https://www.sennegolfclub.de/Start-in-den-Golfsport" target="_blank" class="block w-full text-center bg-[#0F5132] hover:bg-[#0a3822] text-white font-bold py-4 rounded-xl text-lg transition-colors shadow-md">
+                    Termine &amp; Anmeldung ansehen ➔
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-stone-900 text-stone-400 py-12 px-4 text-center">
+        <div class="max-w-4xl mx-auto">
+            <h4 class="text-white text-xl font-bold mb-4 serif-font">Senne Golfclub e.V. Gut Welshof</h4>
+            <p class="mb-6">Sennestraße 123 • 33758 Schloß Holte-Stukenbrock<br>Tel: 05207 / XXXXX • info@sennegolfclub.de</p>
+            <div class="flex justify-center gap-6 text-sm mb-8">
+                <a href="https://www.sennegolfclub.de/Start-in-den-Golfsport" target="_blank" class="hover:text-white transition-colors">Start in den Golfsport</a>
+                <a href="https://www.sennegolfclub.de/" target="_blank" class="hover:text-white transition-colors">Club-Homepage</a>
+            </div>
+            <p class="text-xs border-t border-stone-700 pt-8">
+                © 2026 Senne Golfclub e.V. Gut Welshof. Alle Rechte vorbehalten.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        const tabData = {
+            'rasen': {
+                icon: '🌿',
+                title: 'Heiliger Boden',
+                text: 'Das Gefühl für perfekt gemähtes Grün habt ihr längst verinnerlicht. Auf Gut Welshof erwarten euch weitläufige Fairways inmitten der idyllischen Senne-Landschaft – Natur pur, sportliche Aktivität und die vertraute Ruhe des weiten Rasens.'
+            },
+            'ziel': {
+                icon: '🎯',
+                title: 'Das Ballgefühl',
+                text: 'Einen Ball im perfekten Bogen über die gegnerische Abwehrkette zu zirkeln erfordert präzises Muskelgedächtnis und Raumgefühl. Genau diese Fähigkeiten verhelfen euch beim Golfen zu einem schnellen, überragenden Lerneffekt beim Schwung.'
+            },
+            'taktik': {
+                icon: '🧠',
+                title: 'Die mentale Stärke',
+                text: 'Strategie entscheidet. Wann gehe ich volles Risiko, wann spiele ich defensiv auf Sicherheit? Ein Spiel taktisch zu lesen, umzuschalten und unter Druck die Ruhe zu bewahren, zeichnet gute Fußballer wie auch exzellente Golfer aus.'
+            },
+            'halbzeit': {
+                icon: '🍻',
+                title: 'Die Gemeinschaft',
+                text: 'Ein Sport ist nur so gut wie seine Gemeinschaft. Die Analyse am "19. Loch" in unserem Clubhaus nach einer Runde unterscheidet sich kaum von der Kabinenanalyse nach dem Schlusspfiff. Geselligkeit, Networking und kühle Getränke gehören einfach dazu.'
+            }
+        };
+
+        const buttons = document.querySelectorAll('.tab-btn');
+        const contentIcon = document.getElementById('content-icon');
+        const contentTitle = document.getElementById('content-title');
+        const contentText = document.getElementById('content-text');
+        const contentContainer = document.getElementById('tab-content');
+
+        buttons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                buttons.forEach(b => {
+                    b.classList.remove('active');
+                    b.classList.add('bg-transparent', 'text-stone-600');
+                });
+                
+                btn.classList.add('active');
+                btn.classList.remove('text-stone-600');
+
+                const target = btn.getAttribute('data-target');
+                const data = tabData[target];
+
+                contentContainer.classList.remove('fade-in');
+                void contentContainer.offsetWidth; 
+
+                contentIcon.textContent = data.icon;
+                contentTitle.textContent = data.title;
+                contentText.textContent = data.text;
+
+                contentContainer.classList.add('fade-in');
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const ctx = document.getElementById('sportsComparisonChart').getContext('2d');
+            
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Fußball (90 Min)', 'Golf (18-Loch Runde)'],
+                    datasets: [
+                        {
+                            label: 'Zurückgelegte Distanz (km)',
+                            data: [11.5, 10.2],
+                            backgroundColor: '#2b6cb0', 
+                            yAxisID: 'y',
+                            borderRadius: 4
+                        },
+                        {
+                            label: 'Kalorienverbrauch (kcal)',
+                            data: [750, 850], 
+                            backgroundColor: '#0F5132', 
+                            yAxisID: 'y1',
+                            borderRadius: 4
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: {
+                        mode: 'index',
+                        intersect: false,
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                            labels: {
+                                font: {
+                                    family: "'Open Sans', sans-serif"
+                                }
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed.y !== null) {
+                                        label += context.parsed.y;
+                                        if (context.datasetIndex === 0) label += ' km';
+                                        if (context.datasetIndex === 1) label += ' kcal';
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            type: 'linear',
+                            display: true,
+                            position: 'left',
+                            title: {
+                                display: true,
+                                text: 'Distanz in km',
+                                font: { weight: 'bold' }
+                            },
+                            suggestedMin: 0,
+                            suggestedMax: 15
+                        },
+                        y1: {
+                            type: 'linear',
+                            display: true,
+                            position: 'right',
+                            title: {
+                                display: true,
+                                text: 'Kalorien',
+                                font: { weight: 'bold' }
+                            },
+                            grid: {
+                                drawOnChartArea: false, 
+                            },
+                            suggestedMin: 0,
+                            suggestedMax: 1000
+                        }
+                    }
+                }
+            });
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                if (targetId.startsWith('#')) {
+                    e.preventDefault();
+                    document.querySelector(targetId).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
